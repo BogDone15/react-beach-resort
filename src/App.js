@@ -6,20 +6,20 @@ import Rooms from "./pages/Rooms";
 import SingleRoom from "./pages/SingleRoom";
 import Error from "./pages/Error";
 
-import { Routes, Route } from "react-router-dom";
-
 import Navbar from "./components/Navbar";
+
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/rooms/" element={<Rooms />} />
-        <Route path="/rooms/:slug" element={<SingleRoom />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/rooms/" component={Rooms} />
+        <Route exact path="/rooms/:slug" component={SingleRoom} />
+        <Route component={Error} />
+      </Switch>
     </>
   );
 }
